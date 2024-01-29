@@ -1,0 +1,45 @@
+Main difference between docker compose and kubernetes is that kubernetes can  more, so it's more applicable to enterprise applications.
+
+Docker compose can be used to:
+    Build images
+    Orchestrate running multiple containers
+    Tear down multiple containers
+    View container logs...
+
+Kubernetes can be used to:
+    Run multiple containers using Pods
+    Monitor and scale containers
+    Heal or replace unhealthy Pods/containers
+
+
+How to migrate from docker compose to kubernetes?
+Using Kompose.
+    It takes a Docker Compose file and translated it into Kubernetes resources
+    Purpose: Kompose is a tool that helps users transition from Docker Compose to Kubernetes manifests.
+        It is designed for scenarios where you have an existing application defined using Docker Compose and you want to move it to a Kubernetes environment.
+    Key Features:
+     Converts Docker Compose files to Kubernetes manifests (YAML files).
+     Aids in the translation of Docker Compose concepts (e.g., services, volumes) to equivalent Kubernetes concepts.
+     Helps bridge the gap between Docker Compose-based development and Kubernetes deployment.
+    You have different Flags to indicate how to do it:
+    --file: if the docker compose file is named differently
+    --out: File name or directory where resources will be saved
+        kompose convert --out ./output --replicas 3: Write resources to a specific folder and use 3 replicas in Deployments
+    --volumes: you can define volumes to manage persistent data or share data between containers.
+        Flag allows you to customize how volumes are translated into Kubernetes persistent volume (PV) and persistent volume claim (PVC) object
+
+
+Using Skaffold: It is a Local Kubernetes Development. You can use kubernetes of whatever you want
+    It handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most: writing code
+    Purpose: Skaffold is a tool for streamlining the development workflow in Kubernetes. It focuses on automating the development process,
+        including building container images, deploying them to Kubernetes, and facilitating iterative development.
+    Key Features:
+     Automatic rebuilding and redeployment on code changes.
+     Support for various build tools and container image registries.
+     Configuration flexibility for different development scenarios.
+     Integration with popular IDEs for a seamless development experience.
+     Supports deployment to various Kubernetes environments.
+
+Usage Scenarios:
+    Use Skaffold when you are actively developing and want a streamlined development experience with automatic rebuilding and redeployment in a Kubernetes environment.
+    Use Kompose when you have an existing application defined with Docker Compose and you want to move it to Kubernetes without manually rewriting Kubernetes manifests.
